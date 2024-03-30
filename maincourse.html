@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breakfast Menu</title>
+    <link rel="stylesheet" href="combine.css"> 
+</head>
+<body>
+    <header>
+        <h1>MAIN COURSE</h1>
+    </header>
+    <a class="backmenu" href="menu.html">Back to Menu</a>
+    
+    <div class="main">
+    <div class="menu-container">
+        <div class="menu-row">
+
+        <div class="menu-item">
+            <div class="item-image">
+                <img src="m2.jpg" alt="Breakfast Item 2">
+            </div>
+            <div class="item-details">
+                <h2>Item 2</h2>
+                <p>7.99</p>
+                <button onclick="addToCart('Item 2', 7.99, 'm2.jpg')">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-image">
+                <img src="m3.jpg" alt="Dinner Item 3">
+            </div>
+            <div class="item-details">
+                <h2>Item 3</h2>
+                <p>15.99</p>
+                <button onclick="addToCart('Item 3', 15.99, 'm3.jpg')">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-image">
+                <img src="m4.jpg" alt="Dinner Item 4">
+            </div>
+            <div class="item-details">
+                <h2>Item 4</h2>
+                <p>$12.99</p>
+                <button onclick="addToCart('Item 4', 12.99, 'm4.jpg')">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-image">
+                <img src="m8.jpg" alt="Dinner Item 8">
+            </div>
+            <div class="item-details">
+                <h2>Item 8</h2>
+                <p>$20.99</p>
+                <button onclick="addToCart('Item 8', 20.99, 'm8.jpg')">Add to Cart</button>
+            </div>
+        </div>
+
+        
+    </div>
+    </div>
+
+
+
+    <div class="menu-container">
+        <div class="menu-row">
+            
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="m1.jpg" alt="Dinner Item 8">
+                </div>
+                <div class="item-details">
+                    <h2>Item 8</h2>
+                    <p>$20.99</p>
+                    <button onclick="addToCart('Item 8', 20.99, 'm1.jpg')">Add to Cart</button>
+                </div>
+            </div>
+        <div class="menu-item">
+            <div class="item-image">
+                <img src="m5.jpg" alt="Dinner Item 5">
+            </div>
+            <div class="item-details">
+                <h2>Item 5</h2>
+                <p>$18.99</p>
+                <button onclick="addToCart('Item 5', 18.99, 'm5.jpg')">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-image">
+                <img src="m6.jpg" alt="Dinner Item 6">
+            </div>
+            <div class="item-details">
+                <h2>Item 6</h2>
+                <p>$14.99</p>
+                <button onclick="addToCart('Item 6', 14.99, 'm6.jpg')">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-image">
+                <img src="m7.jpg" alt="Dinner Item 7">
+            </div>
+            <div class="item-details">
+                <h2>Item 7</h2>
+                <p>$13.99</p>
+                <button onclick="addToCart('Item 7', 13.99, 'm7.jpg')">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <div class="menu-container">
+        <div class="menu-row">
+            
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="m9.jpg" alt="Dinner Item 8">
+                </div>
+                <div class="item-details">
+                    <h2>Item 8</h2>
+                    <p>$20.99</p>
+                    <button onclick="addToCart('Item 8', 20.99, 'm8.jpg')">Add to Cart</button>
+                </div>
+            </div>
+        <div class="menu-item">
+            <div class="item-image">
+                <img src="m10.jpg" alt="Dinner Item 5">
+            </div>
+            <div class="item-details">
+                <h2>Item 5</h2>
+                <p>$18.99</p>
+                <button onclick="addToCart('Item 5', 18.99, 'm10.jpg')">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-image">
+                <img src="m11.jpg" alt="Dinner Item 6">
+            </div>
+            <div class="item-details">
+                <h2>Item 6</h2>
+                <p>$14.99</p>
+                <button onclick="addToCart('Item 6', 14.99, 'm11.jpg')">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-image">
+                <img src="m1.jpg" alt="Dinner Item 6">
+            </div>
+            <div class="item-details">
+                <h2>Item 6</h2>
+                <p>$14.99</p>
+                <button onclick="addToCart('Item 6', 14.99, 'm1.jpg')">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    
+</div>
+
+
+
+<script>
+ 
+    function addToCart(itemName, itemPrice, itemImage) {
+        // Retrieve cart items from local storage or initialize an empty array
+        let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+        // Add the new item to the cart
+        cartItems.push({ name: itemName, price: itemPrice, image: itemImage });
+
+        // Update the cart items in local storage
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+        // Show a confirmation message
+        alert('Item added to cart!');
+    }
+
+</script>
+    
+    </body>
+    </html>

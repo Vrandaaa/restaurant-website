@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Restaurant Home</title>
+  <link rel="stylesheet" href="indexstyle.css">
+  <style>
+    #usernameDisplay {
+        color:burlywood;
+        font-size: 20px;
+        font-weight: bold;
+        border-style:double;
+        border-color: beige;
+        margin-top: 1%;
+        margin-left: 1%;
+        margin-right: 80%;
+        text-align: center;
+    }
+</style>
+  
+</head>
+<body>
+  <div id="successPopup" class="login-popup" style="display:none;">
+    <h2>Registration Successful</h2>
+    <p><b>You have been successfully registered.</b></p><br><br><br>
+    <button  onclick="closeSuccessPopup()">Close</button>
+  </div>
+  <div class="background">
+    <img src="h1.jpg" alt="Background Image 1">
+    <img src="h2.jpg" alt="Background Image 2">
+    <img src="h3.jpg" alt="Background Image 3">
+    <img src="h4.jpg" alt="Background Image 4">
+    <img src="h5.jpg" alt="Background Image 4">
+
+  </div>
+  <div id="usernameDisplay" class="user"></div>
+
+
+  <header>
+    <b>
+    <nav>
+      <a href="pictures.html">Pictures</a>
+      <a href="menu.html">Menu</a>
+      <a href="bookatable.html">Book a Table</a>
+      <a href="#" onclick="openLoginPopup()">Login/Sign Up</a>
+
+    </nav>
+    </b>
+  </header>
+  <img class="logo" src="logo.png" alt="logo">
+  
+  <main>
+    <section class="image-section">
+      <p class="welcome-text">Flavors Inspired by<br>
+        <p class="space">the Seasons</p></p>
+      <p class="sub-text"><I>Come with family & feel the joy of mouthwatering food</I></p>
+      <br>
+      <a  class="btn" href="menu.html">View Menu</a>
+
+
+    </section>
+
+  </main>  
+
+
+  <footer>
+    <b><p class="text">Contact us at: contact@restaurant.com</p></b>
+  </footer>
+  <div id="loginPopup" class="login-popup">
+    <h2>Login</h2>
+    <form action="login.php" method="post">
+      <b>Username</b><input type="text" name="username" placeholder="Username" required><br>
+      <b>Email</b><input type="email" name="email" placeholder="Email" required><br>
+      <b>Password</b><input type="password" id="password" placeholder="must be of 8 character" name="password" pattern=".{8,}" title="Password must be at least 8 characters long" required><br>
+      <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a href="signup.php">Sign Up</a></p>
+    <button onclick="closeLoginPopup()">Close</button> 
+  </div>
+
+
+  <script>
+ const images = document.querySelectorAll('.background img');
+ let index = 0;
+
+ function changeBackground() {
+   images.forEach(img => img.style.opacity = '0');
+   index = (index + 1) % images.length;
+   images[index].style.opacity = '1';
+   setTimeout(changeBackground, 3000);
+ }
+
+ changeBackground();
+ function openSuccessPopup() {
+      document.getElementById('successPopup').style.display = 'block';
+    }
+
+ function openLoginPopup() {
+      document.getElementById('loginPopup').style.display = 'block';
+    }
+
+    function closeLoginPopup() {
+      document.getElementById('loginPopup').style.display = 'none';
+    }
+    function closeSuccessPopup() {
+      document.getElementById('successPopup').style.display = 'none';}
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('success') && urlParams.get('success') === 'true') {
+      openSuccessPopup();
+    }
+    window.onload = function() {
+    openLoginPopup();
+
+    }
+    var username = localStorage.getItem('username');
+    localStorage.removeItem('username');
+
+        // Display the username on the page
+        if (username) {
+            document.getElementById('usernameDisplay').innerText = "User: " + username;
+        }
+  </script>
+
+</body>
+</html>
+
+

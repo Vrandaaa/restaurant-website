@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Pictures</title>
+  <link rel="stylesheet" href="picture.css">
+  <meta name="viewport" content="width=device-width">
+</head>
+
+<body>
+
+  
+  <header>
+
+    <b>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="pictures.html">Pictures</a>
+      <a href="menu.html">Menu</a>
+      <a href="bookatable.html">Book a Table</a>
+      <a href="review.html">Reviews</a>
+    </nav>
+    </b>
+  </header>
+  <img class="logo" src="logo.png" alt="logo">
+
+  <main class="slide-container">
+    <img src="img1.jpg" class="slide" alt="image">
+    <img src="img2.jpg" class="slide" alt="image">
+    <img src="img3.jpg" class="slide" alt="image">
+    <img src="img4.jpg" class="slide" alt="image">
+    <img src="img5.jpg" class="slide" alt="image">
+    <img src="img6.jpg" class="slide" alt="image">
+    <img src="img7.jpg" class="slide" alt="image">
+    <img src="bg2.jpg" class="slide" alt="image">
+    <img src="bg3.jpg" class="slide" alt="image">
+    <img src="pic2.jpg" class="slide" alt="image">
+    <img src="pic3.jpg" class="slide" alt="image">
+    <img src="restaurant2.jpg" class="slide" alt="image">
+    <img src="restaurant3.jpg" class="slide" alt="image">
+  </main>
+  <div class="nav">
+    <button class="btn" onclick="goprev()">
+       <
+    </button>
+    <button class="btn" onclick="gonext()">
+      >
+   </button>
+  </div>
+  
+  
+  <h1>
+    Our location!
+  </h1>
+  <p class="map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d539266.126555315!2d76.70529463620345!3d28.629182995829634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1cc394c8b77d%3A0x4fd9595b075bc420!2sCapital%20Restaurant!5e0!3m2!1sen!2sin!4v1708013658528!5m2!1sen!2sin" width="450" height="530" style="border:0;" allowfullscreen="" loading="fast" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </p>
+  <img class="info" src="info1.png" alt="info" >
+  <script>
+    const slides = document.querySelectorAll(".slide")
+    var counter =0;
+    slides.forEach
+    (
+      (slide,index)=>
+      {
+        slide.style.left = `${index * 100}%`
+      }
+    )
+    const goprev = () =>
+    {
+      counter--  
+      slideImage()
+    }
+    const gonext =() =>
+    {
+      counter++  
+      slideImage()
+    }
+    const slideImage =() =>
+    {
+      slides.forEach
+      (
+        (slide) =>
+        {
+          slide.style.transform = `translateX(-${counter * 100}%)`;
+        }
+      )
+    }
+    
+    
+
+  </script>
+  </body>
+
+
+</html>

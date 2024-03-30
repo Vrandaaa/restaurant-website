@@ -1,0 +1,117 @@
+@font-face{
+  font-family:myFont;
+  src:url(new.ttf)
+}
+*
+{
+  padding: 0;
+  margin: 0;
+  box-sizing:border-box;
+  background-color:rgb(0, 0, 0);
+  overflow-y: auto;
+}
+main
+{
+  width:50%;
+  height:427px;
+  margin: auto;
+  margin-top:75px;
+  box-shadow: 0px 0px 3px rgb(0, 0, 0);
+  position: relative;
+  overflow:hidden;
+}
+.slide
+{
+  height:fit-content;
+  width:100%;
+  position: absolute;
+}
+
+.nav
+{
+  text-align: center;
+  margin-top: 15px;
+}
+.nav button
+{
+  font-size: 25px;
+  padding: 5px;
+
+}
+.btn
+{
+  cursor: pointer;
+  font-size: 20px;
+  color:black;
+  background-color: rgb(219, 189, 56);
+  border-radius: 50px;
+  border-style: groove;
+
+}
+.btn:hover
+{
+  border-style:double;
+}
+.map
+{
+  float: left;
+  margin-left: 5%;
+  margin-top:1%;
+  border-style: groove;
+  border-color: rgb(219, 189, 56);
+  border-width: 20%;
+  margin-bottom: 2%;
+}
+
+h1
+{
+  color:rgb(219, 189, 56);
+  margin-left:5% ;
+  font-size:50px;
+  font-family: 'myFont';
+}
+header {
+  margin-top: 1%;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+  border-style: double;
+  border-color: rgba(219, 189, 56, 0.5);
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+  margin: 0 25px;
+  transition: color 0.3s ease; 
+  font-size: 25px;
+}
+
+header a:hover {
+  color: #ffcc00; 
+}
+.logo
+    {
+      height: 70px;
+      width: 150px;
+      float: left;
+      margin-left: 1%;
+    }
+
+.info
+{
+  float: right;
+  width: fit-content;
+  height:fit-content;
+  margin-right: 4%;
+  margin-top:none;
+  border-radius: 0;
+  transition: border-radius ease-in-out 3s;
+  margin-bottom: 2%;
+
+}
+.info:hover
+{
+  border-radius: 50%;
+
+}

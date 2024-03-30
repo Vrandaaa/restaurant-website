@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="orderonline.css">
+    <link href="orderdetails.php">
+    <title>Order Online</title>
+</head>
+<body>
+    
+<header>
+    <h1>Order Online</h1>
+</header>
+
+<div class="main">
+    <div class="cart-section">
+        <h2>Cart Items</h2>
+        <div class="cart-items">
+            <!-- Cart items will be dynamically generated here -->
+        </div>
+        <div class="total-price">Total Price: $<span class="total-price-value"></span></div> <!-- Display total price here -->
+        <button onclick="location.href='menu.html'">Add More Items</button> <!-- Redirect button -->
+        <button onclick="clearCart()">Clear Cart</button> <!-- Button to clear cart data -->
+       
+    </div>
+
+    <div class="bill-summary">
+        <h2>BILL SUMMARY</h2>
+        <div class="subtotal">Subtotal: <span class="subtotal-price"></span></div>
+        <div class="gst-restaurant-charges">GST and Restaurant Charges: <span class="gst-price"></span></div>
+        <div class="delivery-charges">Delivery Charges: <span class="delivery-price"></span></div>
+        <div class="platform-fee">Platform Fee: <span class="platform-fee-price">$3</span></div>
+        <div class="grand-total">GRAND TOTAL: <span class="grand-total-price"></span></div>
+        <div class="payment-method">Payment Method: <span>Cash on Delivery</span></div> <!-- Added payment method -->
+    </div>
+
+    <div class="add-details">
+        <h2>Add Details</h2>
+        <form id="orderDetailsForm" action="orderdetails.php" method="post" onsubmit="return validateForm()">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="city">City:</label>
+                <select id="city" name="city" required>
+                    <option value="">Select city</option>
+                    <option value="delhi">DELHI</option>
+                    <option value="gurugram">GURUGRAM</option>
+                    <option value="ghaziabad">NOIDA</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Complete address:</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Number:</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+                <small>Format: 1234567890</small>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="Grand total">Grand total:</label>
+                <input type="text" id="price" name="price" placeholder="Enter above mentioned grand total" required>
+            </div>
+            <div class="form-group">
+                <label for="item">Enter item selected:</label>
+                <input type="text" id="item" name="item" placeholder="Enter your item name" required>
+            </div>
+            <div class="form-group">
+                <div class="cooking-request">
+
+                <label for="cookingRequest">Add Cooking Request:</label>
+                <input type="text" id="cookingRequest" name="cookingRequest" placeholder="if no cooking request write 'NO'">
+                <label for="noCutlery">Don't Send Cutlery:</label>
+                <input type="checkbox" id="noCutlery" name="noCutlery">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="cashOnDelivery">Cash on Delivery:</label>
+                <input type="checkbox" id="cashOnDelivery" name="cashOnDelivery">
+            </div>
+            <button type="submit" class="place-order-btn">Place Order</button>
+
+        </form>
+        
+</div>
+
+<script>
+    function displayCartItems() {
+        let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        let cartContainer = document.querySelector('.cart-items');
+
+        if (cartItems.length === 0) {
+            cartContainer.innerHTML = "<p>Oops! Nothing added yet.</p>";
+        } else {
+            cartItems.forEach(item => {
+                let itemElement = document.createElement('div');
+                itemElement.classList.add('cart-item');
+                itemElement.innerHTML = `
+                    <div class="item-details">
+                        <h3>${item.name}</h3>
+                        <p class="original-price">Original Price: $${item.price.toFixed(2)}</p>
+                    </div>
+                    <div class="quantity-controls">
+                        <span class="adjust-msg">Adjust quantity</span>
+                        <button onclick="adjustQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button onclick="adjustQuantity(this, 1)">+</button>
+                    </div>
+                    <div class="updated-price"></div>
+                    <button onclick="removeItem(this)">Remove</button>
+                `;
+                cartContainer.appendChild(itemElement);
+            });
+        }
+        updateTotalPrice();
+    }
+
+    function adjustQuantity(buttonElement, change) 
+    {
+        let quantityElement = buttonElement.parentNode.querySelector('.quantity');
+        let quantity = parseFloat(quantityElement.innerText);
+        let newQuantity = quantity + change;
+        if (newQuantity >= 1)
+         {
+            quantityElement.innerText = newQuantity;
+            updateTotalPrice(); // Update total price when quantity changes
+            updateItemPrice(buttonElement.parentNode.parentNode);
+        }
+    }
+
+    function updateItemPrice(itemElement) {
+        let quantity = parseFloat(itemElement.querySelector('.quantity').innerText);
+        let price = parseFloat(itemElement.querySelector('.original-price').innerText.replace('Original Price: $', ''));
+        let updatedPriceElement = itemElement.querySelector('.updated-price');
+        updatedPriceElement.innerText = "Updated Price: $" + (quantity * price).toFixed(2);
+    }
+
+    function removeItem(buttonElement) {
+        let itemElement = buttonElement.parentNode;
+        itemElement.parentNode.removeChild(itemElement);
+        updateTotalPrice(); // Update total price after removing item
+    }
+
+    function updateTotalPrice() {
+        let totalPriceElement = document.querySelector('.total-price-value');
+        let total = 0;
+
+        document.querySelectorAll('.cart-item').forEach(item => {
+            let quantity = parseFloat(item.querySelector('.quantity').innerText);
+            let price = parseFloat(item.querySelector('.original-price').innerText.replace('Original Price: $', ''));
+            total += price * quantity;
+        });
+
+        totalPriceElement.innerText = total.toFixed(2);
+
+        // Calculate amounts
+        let subtotalAmount = total;
+        let gstAmount = total * 0.03; // GST: 3% of total price
+        let deliveryAmount = total * 0.04; // Delivery charges: 4% of total price
+        let platformFee = 3; // Platform Fee: $3.00
+        let grandTotal = subtotalAmount + gstAmount + deliveryAmount + platformFee;
+
+        // Update bill summary
+        document.querySelector('.subtotal-price').innerText = subtotalAmount.toFixed(2);
+        document.querySelector('.gst-price').innerText = gstAmount.toFixed(2);
+        document.querySelector('.delivery-price').innerText = deliveryAmount.toFixed(2);
+        document.querySelector('.platform-fee-price').innerText = "$" + platformFee.toFixed(2); // Update platform fee amount
+        document.querySelector('.grand-total-price').innerText = grandTotal.toFixed(2);
+    }
+
+    
+
+    function validateForm() {
+    // Get user-entered grand total and item name
+    let userGrandTotal = parseFloat(document.getElementById('price').value);
+    let userItem = document.getElementById('item').value;
+
+    // Get displayed grand total and item names
+    let displayedGrandTotal = parseFloat(document.querySelector('.grand-total-price').innerText);
+
+    let cartItemElements = document.querySelectorAll('.cart-item h3');
+    let displayedItems = Array.from(cartItemElements).map(item => item.innerText);
+
+    // Split the user-entered item names by commas
+    let userItemNames = userItem.split(',').map(item => item.trim());
+
+    // Validate grand total
+    if (userGrandTotal !== displayedGrandTotal) {
+        alert("Grand total does not match the displayed value.");
+        return false;
+    }
+
+    // Validate item names
+    if (!arraysEqual(userItemNames, displayedItems)) {
+        alert("Item names do not match the selected items.");
+        return false;
+    }
+
+    // If validation passes, return true to submit the form
+    return true;
+}
+
+
+
+
+    
+
+    function clearCart() {
+        localStorage.removeItem('cartItems');
+        location.reload(); // Reload the page to reflect the changes
+    }
+
+    
+
+    window.onload = function()
+    {
+            displayCartItems();
+    };
+
+</script>
+
+</body>
+</html>

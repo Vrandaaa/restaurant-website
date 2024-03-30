@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>beverages</title>
+    <link rel="stylesheet" href="combine.css"> <!-- Assuming you have a separate CSS file -->
+</head>
+<body>
+    <header>
+        <h1>BEVERAGES</h1>
+    </header>
+    <a href="menu.html">Back to Menu</a>
+
+
+    <div class="main">
+    <div class="menu-container">
+        <div class="menu-row">
+
+        <div class="menu-item">
+            <div class="item-image">
+                <img src="drink1.jpg" alt="Breakfast Item 2">
+            </div>
+            <div class="item-details">
+                <h2>Drink 2</h2>
+                <p>$7.99</p>
+                <button  onclick="addToCart('Drink 2', 7.99, 'drink1.jpg')">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-image">
+                <img src="drink2.jpg" alt="Dinner Item 3">
+            </div>
+            <div class="item-details">
+                <h2>Drink 3</h2>
+                <p>$15.99</p>
+                <button  onclick="addToCart('Drink 3', 7.99, 'drink13.jpg')">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-image">
+                <img src="drink3.jpg" alt="Dinner Item 4">
+            </div>
+            <div class="item-details">
+                <h2>Drink 4</h2>
+                <p>$12.99</p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-image">
+                <img src="drink4.jpg" alt="Dinner Item 8">
+            </div>
+            <div class="item-details">
+                <h2>Drink 10</h2>
+                <p>$20.99</p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+
+        
+    </div>
+    </div>
+
+
+
+    <div class="menu-container">
+        <div class="menu-row">
+            
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="drink5.jpg" alt="Dinner Item 8">
+                </div>
+                <div class="item-details">
+                    <h2>Drink 8</h2>
+                    <p>$20.99</p>
+                    <button>Add to Cart</button>
+                </div>
+            </div>
+        <div class="menu-item">
+            <div class="item-image">
+                <img src="drink6.jpg" alt="Dinner Item 5">
+            </div>
+            <div class="item-details">
+                <h2>Drink 1</h2>
+                <p>$18.99</p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-image">
+                <img src="drink7.jpg" alt="Dinner Item 6">
+            </div>
+            <div class="item-details">
+                <h2>Drink 6</h2>
+                <p>$14.99</p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-image">
+                <img src="drink1.jpg" alt="Dinner Item 7">
+            </div>
+            <div class="item-details">
+                <h2>Drink 7</h2>
+                <p>$13.99</p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+</div>
+<script>
+    
+   
+function addToCart(itemName, itemPrice, itemImage) 
+{
+    // Retrieve cart items from local storage or initialize an empty array
+    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+    // Add the new item to the cart
+    cartItems.push({ name: itemName, price: itemPrice, image: itemImage });
+
+    // Update the cart items in local storage
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+    // Show a confirmation message
+    alert('Item added to cart!');
+}
+
+
+</script>  
+    
+    </body>
+    </html>

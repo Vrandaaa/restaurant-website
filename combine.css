@@ -1,0 +1,138 @@
+@font-face{
+    font-family:myFont;
+    src:url(new.ttf)
+  }
+body {
+    margin: 0;
+    padding: 0;
+    font-family:'myFont';
+    background-color:black; 
+}
+
+header {
+    margin-top: 4%px;
+    color: rgb(214, 173, 60);
+    text-align: center;
+    font-size: 30px;
+}
+
+.backmenu
+{   margin-top: 0;
+    text-decoration: none;
+    color :black;
+    font-family: 'myFont';
+    font-size: 20px;
+    border-style: groove;
+    background-color: rgb(221, 221, 89);
+    padding: 5px;
+    margin-left: 45%;
+    margin-bottom: 20px;
+    border-radius: 10%;
+}
+.backmenu:hover
+{
+    background-color:rgb(241, 241, 164);
+    color:black;
+}
+
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align the rows */
+}
+
+.menu-row {
+    display: flex;
+    justify-content: space-around; /* Evenly distribute items horizontally */
+    margin-bottom: 20px; /* Add space between rows */
+    align-items: stretch; /* Ensure all items stretch to the same height */
+}
+
+.menu-item {
+    flex: 1; /* Allow items to grow to fill the available space */
+    background-color:rgb(243, 245, 163);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    transition: all 0.3s ease;
+    margin: 0 40px; /* Add margin to create space between items */
+    width: 200px;
+}
+
+
+.menu-item:hover {
+    transform:  scale(1.1); /* Move up slightly and enlarge on hover */
+}
+
+.item-image img {
+    width: 100%; /* Make the image fill its container */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.item-details {
+    padding: 20px;
+    text-align: center;
+}
+
+.item-details h2 {
+    margin: 0 0 10px;
+    font-size: 24px;
+    color: #333; /* Dark text color */
+}
+
+.item-details p {
+    margin: 5px 0;
+    color: #666; /* Lighter text color */
+}
+
+button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+.item-image {
+    width: 100%; /* Make the container fill its parent */
+    height: 150px; /* Set a fixed height for the image container */
+    overflow: hidden; /* Hide any overflow */
+}
+
+.item-image img {
+    width: 100%; /* Make the image fill its container */
+    height: 100%; /* Ensure the image fills the container */
+    object-fit: cover; /* Scale the image while preserving aspect ratio */
+    object-position: center; /* Center the image within the container */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.main
+{
+    margin-top: 30px;
+}
+.image
+{
+    width:50px;
+    height:50px;
+    text-decoration: none;
+    float: left;
+    margin-left: 3%;
+}
+.imagetext
+{
+    text-decoration: none;
+    margin-top: 20px;
+    color:white;
+    margin-left: 2%;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+}

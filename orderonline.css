@@ -1,0 +1,157 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.cart-section, .bill-summary, .add-details {
+    margin-bottom: 30px;
+}
+
+.cart-item {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.item-details {
+    display: inline-block;
+    width: 60%;
+}
+
+.quantity-controls {
+    display: inline-flex; /* Change display to inline-flex */
+    align-items: center; /* Add this line */
+}
+
+.quantity-controls button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin: 0 5px; /* Add this line to create space between the buttons */
+}
+
+.updated-price {
+    margin-top: 10px;
+    color: #777;
+}
+
+.total-price {
+    font-size: 20px;
+    float: right;
+    margin-bottom: 20px;
+}
+
+.bill-summary h2 {
+    text-align: center; /* Center the heading */
+}
+
+.grand-total {
+    font-weight: bold; /* Make the label bold */
+}
+
+.grand-total-price {
+    font-weight: bold; /* Make the price bold */
+}
+
+.platform-fee span {
+    float: right; /* Align the amount to the right */
+}
+
+.bill-summary, .add-details {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.bill-summary div, .add-details div {
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.bill-summary span, .add-details span {
+    float: right;
+    color: #333;
+}
+
+button.place-order-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.cooking-request {
+    margin-top: 20px;
+}
+
+.cooking-request label {
+    display: inline-block;
+    margin-right: 10px; /* Add margin-right to create space between the label and checkbox */
+}
+
+.cooking-request input[type="text"] {
+    display: inline-block;
+    vertical-align: middle;
+    width: calc(100% - 150px); /* Adjust the width to accommodate both label and checkbox */
+    margin-bottom: 10px; /* Add margin-bottom to create space between the label and text box */
+}
+
+.cooking-request input[type="checkbox"] {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group input[type="email"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-group input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.form-group input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
